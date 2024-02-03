@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RandomDataGenerater</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+            background-color: bisque;
+        }
+
+        .container {
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        #generate {
+            padding: 10px 20px;
+            font-size: 20px;
+            cursor: pointer;
+            background: #007bff;
+            color: #fff;
+            border-radius: 5px;
+        }
+
+        #generate:hover {
+            background: #0056b3;
+            transition: all 0.3s ease-in-out;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <h1>RandomDataGenerater</h1>
+        <button id="generate">Generater Data</button>
+    </div>
+    <script>
+        document.getElementById('generate').addEventListener('click', async () => {
+            try {
+                const response = await fetch('http://localhost:7000', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }
+                });
+                const result = await response.json();
+                console.log(result.message);
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        })
+    </script>
+    <script src="main.js"></script>
+</body>
+
+</html>
