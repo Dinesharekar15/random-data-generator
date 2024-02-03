@@ -23,14 +23,14 @@ const Employee=mongoose.model('Employee', employeeSchema);
 app.post('/', async(req,res)=>{
     try{
 
-        await Employee.deleteMany({});
+        // await Employee.deleteOne({});
         const randomEmployee={
             name:`Employee${Math.floor(Math.random() * 1000)}`,
             age:Math.floor(Math.random()*50)+20,
             salary: Math.floor(Math.random() * 100000),
             position:`developer`
         }
-        await Employee.create(randomEmployee);
+        Employee.create(randomEmployee);
         
         console.log('Employee saved successfully');
         res.status(200).json({ message: 'Random data generated and saved successfully!' });
