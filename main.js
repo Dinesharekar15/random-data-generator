@@ -1,11 +1,13 @@
 const express=require('express');
 const mongoose=require('mongoose');
 const bodyParser=require('body-parser');
+const cors = require('cors');
 const PORT=7000;
 
 const app=express();
+app.use(cors());
 app.use(bodyParser.json());
-mongoose.connect('mongodb://localhost:27017/company', {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect('mongodb://localhost:27017/company');
 
 const employeeSchema=new mongoose.Schema({
     name:String,
